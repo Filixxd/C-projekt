@@ -1,0 +1,6 @@
+C:\Users\Filixd\source\repos\Kolkoikrzyzyk\Kolkoikrzyzyk\bin\Debug\Kolkoikrzyzyk.exe.config
+C:\Users\Filixd\source\repos\Kolkoikrzyzyk\Kolkoikrzyzyk\bin\Debug\Kolkoikrzyzyk.exe
+C:\Users\Filixd\source\repos\Kolkoikrzyzyk\Kolkoikrzyzyk\bin\Debug\Kolkoikrzyzyk.pdb
+C:\Users\Filixd\source\repos\Kolkoikrzyzyk\Kolkoikrzyzyk\obj\Debug\Kolkoikrzyzyk.csprojAssemblyReference.cache
+C:\Users\Filixd\source\repos\Kolkoikrzyzyk\Kolkoikrzyzyk\obj\Debug\Kolkoikrzyzyk.exe
+C:\Users\Filixd\source\repos\Kolkoikrzyzyk\Kolkoikrzyzyk\obj\Debug\Kolkoikrzyzyk.pdb

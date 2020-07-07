@@ -9,6 +9,21 @@ namespace Kółkokrzyżyk
     class Program
     {
         public string[] mapa = new string[] { "", " ", "|", " ", "|", " ", "-", "+", "-", "+", "-", " ", "|", " ", "|", " ", "-", "+", "-", "+", "-", " ", "|", " ", "|", " " };
+        static void Start()
+        {
+            string odp;
+            do
+            {
+                Console.WriteLine("Witaj w grze w kółko i krzyżyk. \r\nCzy znasz zasady tej gry?");
+                odp = Console.ReadLine();
+                odp = odp.ToLower();
+                if (odp == "nie")
+                {
+                    Zasady();
+                }
+            } while (odp != "tak");
+            Console.WriteLine("No to zaczynajmy");
+        }
         static void Zasady()
         {
             Console.WriteLine("Graficznie (np. na kartce) gra najczęściej przebiega następująco: \r\nPole gry to 4 przecinające się " +
@@ -43,7 +58,7 @@ namespace Kółkokrzyżyk
             bool wygrana = false;
             int wybor;
 
-            do
+            for (int j = 0 ; wygrana == true ;j++ )
             {
                 wybor = int.Parse(Console.ReadLine());
                 switch (wybor)
@@ -456,48 +471,67 @@ namespace Kółkokrzyżyk
                         Console.Write("\r\n");
                     }
                 }
-                if(mapa[1] != " " && mapa[3] != " " && mapa[5] != " " && mapa[11] != " " && mapa[13] != " " && mapa[15] != " " && mapa[21] != " " && mapa[23] != " " && mapa[25] != " ")
+                if (j == 5)
+                {
+                    Console.WriteLine("Remis");
+                    break;
+                }
+                else if (mapa[1] != " " && mapa[3] != " " && mapa[5] != " " && mapa[11] != " " && mapa[13] != " " && mapa[15] != " " && mapa[21] != " " && mapa[23] != " " && mapa[25] != " ")
                 {
                     Console.WriteLine("Remis");
                     wygrana = true;
+                    Znow();
                 }
-            } while (wygrana == true);
+                else if (mapa[1] == "X" && mapa[3] == "X" && mapa[5] == "X" || mapa[11] == "X" && mapa[13] == "X" && mapa[15] == "X" || mapa[21] == "X" && mapa[23] == "X" && mapa[25] == "X" || mapa[1] == "X" && mapa[11] == "X" && mapa[21] == "X" || mapa[3] == "X" && mapa[13] == "X" && mapa[23] == "X" || mapa[5] == "X" && mapa[15] == "X" && mapa[25] == "X" || mapa[1] == "X" && mapa[13] == "X" && mapa[25] == "X" || mapa[21] == "X" && mapa[13] == "X" && mapa[5] == "X")
+                {
+                    wygrana = true;
+                    Console.WriteLine("Wygrałeś!");
+                    Znow();
+                }
+                else if (mapa[1] == "O" && mapa[3] == "O" && mapa[5] == "O" || mapa[11] == "O" && mapa[13] == "O" && mapa[15] == "O" || mapa[21] == "O" && mapa[23] == "O" && mapa[25] == "O" || mapa[1] == "O" && mapa[11] == "O" && mapa[21] == "O" || mapa[3] == "O" && mapa[13] == "O" && mapa[23] == "O" || mapa[5] == "O" && mapa[15] == "O" && mapa[25] == "O" || mapa[1] == "O" && mapa[13] == "O" && mapa[25] == "O" || mapa[21] == "O" && mapa[13] == "O" && mapa[5] == "O")
+                {
+                    wygrana = true;
+                    Console.WriteLine("Przegrałeś!");
+                    Znow();
+                }
+            }
         }
         static void Znow()
         {
-            Console.WriteLine("Chcesz zagrać jeszcze raz?\r\n1 - tak\r\n2 - nie");
-            int znow = int.Parse(Console.ReadLine());
-            switch (znow)
+            int znow;
+            do
             {
-                case 1:
-                    Gra();
-                    break;
+                Console.WriteLine("Chcesz zagrać jeszcze raz?\r\n1 - tak\r\n2 - nie");
+                string czytaj = Console.ReadLine();
+                if (czytaj == "")
+                {
+                    Console.WriteLine("Wybierz jedną z opcji:\r\nChcesz zagrać jeszcze raz?\r\n1 - tak\r\n2 - nie");
+                    czytaj = Console.ReadLine();
+                }
+                znow = int.Parse(czytaj);
+                switch (znow)
+                {
+                    case 1:
+                        Gra();
+                        break;
 
-                case 2:
-                    Console.WriteLine("Dziękuję za grę!");
-                    break;
-            }
-                
-                    
+                    case 2:
+                        Console.WriteLine("Dziękuję za grę!");
+                        Koniec();
+                        break;
+                }
+            } while (znow != 0);
             
+        }
+        static void Koniec()
+        {
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
         static void Main(string[] args)
         {
-            string odp = null;
-            do
-            {
-                Console.WriteLine("Witaj w grze w kółko i krzyżyk. \r\nCzy znasz zasady tej gry?");
-                odp = Console.ReadLine();
-                odp = odp.ToLower();
-                if (odp == "nie")
-                {
-                    Zasady();
-                }
-            } while (odp != "tak");
-            Console.WriteLine("No to zaczynajmy");
+            Start();
             Rysuj();
             Gra();
-            Znow();
         }
     }
 }

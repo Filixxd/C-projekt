@@ -54,11 +54,12 @@ namespace Kółkokrzyżyk
         }
         static void Gra()
         {
+            Rysuj();
             string[] mapa = { "", " ", "|", " ", "|", " ", "-", "+", "-", "+", "-", " ", "|", " ", "|", " ", "-", "+", "-", "+", "-", " ", "|", " ", "|", " " };
             bool wygrana = false;
             int wybor;
-
-            for (int j = 0 ; wygrana == true ;j++ )
+            int j = 0;
+            while(wygrana != true)
             {
                 wybor = int.Parse(Console.ReadLine());
                 switch (wybor)
@@ -470,13 +471,9 @@ namespace Kółkokrzyżyk
                     {
                         Console.Write("\r\n");
                     }
+                    j++;
                 }
-                if (j == 5)
-                {
-                    Console.WriteLine("Remis");
-                    break;
-                }
-                else if (mapa[1] != " " && mapa[3] != " " && mapa[5] != " " && mapa[11] != " " && mapa[13] != " " && mapa[15] != " " && mapa[21] != " " && mapa[23] != " " && mapa[25] != " ")
+                if (mapa[1] != " " && mapa[3] != " " && mapa[5] != " " && mapa[11] != " " && mapa[13] != " " && mapa[15] != " " && mapa[21] != " " && mapa[23] != " " && mapa[25] != " ")
                 {
                     Console.WriteLine("Remis");
                     wygrana = true;
@@ -530,7 +527,6 @@ namespace Kółkokrzyżyk
         static void Main(string[] args)
         {
             Start();
-            Rysuj();
             Gra();
         }
     }

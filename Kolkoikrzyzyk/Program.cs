@@ -61,7 +61,12 @@ namespace Kółkokrzyżyk
             int j = 0;
             while(wygrana != true)
             {
-                wybor = int.Parse(Console.ReadLine());
+                string wyb;
+                do
+                {
+                    wyb = Console.ReadLine();
+                } while (wyb == "");
+                wybor = int.Parse(wyb);
                 switch (wybor)
                 {
                     case 1:
@@ -460,7 +465,7 @@ namespace Kółkokrzyżyk
                             }
                         }
                         break;
-                    default:
+                    case 0:
                         Console.WriteLine("Default case");
                         break;
                 }

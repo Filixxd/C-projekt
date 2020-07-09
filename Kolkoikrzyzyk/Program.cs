@@ -23,6 +23,19 @@ namespace Kółkokrzyżyk
             } while (odp != 1);
             Console.WriteLine("No to zaczynajmy");
         }
+        static void Ponowne()
+        {
+            int odp;
+            do {    
+                Console.WriteLine("Czy znasz zasady tej gry?\r\n\r\n1 - tak\r\n2 - nie");
+                odp = int.Parse(Console.ReadLine());
+                if (odp == 2)
+                {
+                    Zasady();
+                }
+            } while (odp != 1);
+            Console.WriteLine("No to zaczynajmy");
+        }
         static void Zasady()
         {
             Console.WriteLine("Graficznie (np. na kartce) gra najczęściej przebiega następująco: \r\nPole gry to 4 przecinające się " +
@@ -270,6 +283,10 @@ namespace Kółkokrzyżyk
                             mapa[13] = "X";
                             Random rnd = new Random();
                             int komp = rnd.Next(1, 10);
+                            if (mapa[21] == "X" && mapa[15] == "x")
+                            {
+                                komp = 3;
+                            }
                             if (komp == 1 && mapa[1] == " ")
                             {
                                 mapa[1] = "O";
@@ -358,6 +375,14 @@ namespace Kółkokrzyżyk
                             mapa[21] = "X";
                             Random rnd = new Random();
                             int komp = rnd.Next(1, 10);
+                            if (mapa[21] == "X" && mapa[15] == "X")
+                            {
+                                komp = 3;
+                            }
+                            if (mapa[21] == "X" && mapa[23] == "X")
+                            {
+                                komp = 9;
+                            }
                             if (komp == 1 && mapa[1] == " ")
                             {
                                 mapa[1] = "O";
@@ -402,6 +427,10 @@ namespace Kółkokrzyżyk
                             mapa[23] = "X";
                             Random rnd = new Random();
                             int komp = rnd.Next(1, 10);
+                            if (mapa[21] == "X" && mapa[23] == "X")
+                            {
+                                komp = 9;
+                            }
                             if (komp == 1 && mapa[1] == " ")
                             {
                                 mapa[1] = "O";
@@ -449,6 +478,10 @@ namespace Kółkokrzyżyk
                             if (mapa[1] == "X" && mapa[25] == "X")
                             {
                                 komp = 5;
+                            }
+                            if (mapa[21] == "X" && mapa[23] == "x")
+                            {
+                                komp = 9;
                             }
                             if (komp == 1 && mapa[1] == " ")
                             {
@@ -537,6 +570,7 @@ namespace Kółkokrzyżyk
                 switch (znow)
                 {
                     case 1:
+                        Ponowne();
                         Gra();
                         break;
 

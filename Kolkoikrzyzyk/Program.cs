@@ -11,17 +11,16 @@ namespace Kółkokrzyżyk
         public string[] mapa = new string[] { "", " ", "|", " ", "|", " ", "-", "+", "-", "+", "-", " ", "|", " ", "|", " ", "-", "+", "-", "+", "-", " ", "|", " ", "|", " " };
         static void Start()
         {
-            string odp;
+            int odp;
             do
             {
-                Console.WriteLine("Witaj w grze w kółko i krzyżyk. \r\nCzy znasz zasady tej gry?");
-                odp = Console.ReadLine();
-                odp = odp.ToLower();
-                if (odp == "nie")
+                Console.WriteLine("Witaj w grze w kółko i krzyżyk. \r\nCzy znasz zasady tej gry?\r\n\r\n1 - tak\r\n2 - nie");
+                odp = int.Parse(Console.ReadLine());
+                if (odp == 2)
                 {
                     Zasady();
                 }
-            } while (odp != "tak");
+            } while (odp != 1);
             Console.WriteLine("No to zaczynajmy");
         }
         static void Zasady()
@@ -75,6 +74,18 @@ namespace Kółkokrzyżyk
                             mapa[1] = "X";
                             Random rnd = new Random();
                             int komp = rnd.Next(1, 10);
+                            if (mapa[1] == "X" && mapa[3]== "X")
+                            {
+                                komp = 3;
+                            }
+                            if (mapa[1] == "X" && mapa[11] == "X")
+                            {
+                                komp = 7;
+                            }
+                            if (mapa[1] == "X" && mapa[25] == "X")
+                            {
+                                komp = 5;
+                            }
                             if (komp == 1 && mapa[1] == " ")
                             {
                                 mapa[1] = "O";
@@ -119,6 +130,10 @@ namespace Kółkokrzyżyk
                             mapa[3] = "X";
                             Random rnd = new Random();
                             int komp = rnd.Next(1, 10);
+                            if (mapa[1] == "X" && mapa[3] == "X")
+                            {
+                                komp = 3;
+                            }
                             if (komp == 1 && mapa[1] == " ")
                             {
                                 mapa[1] = "O";
@@ -207,6 +222,10 @@ namespace Kółkokrzyżyk
                             mapa[11] = "X";
                             Random rnd = new Random();
                             int komp = rnd.Next(1, 10);
+                            if (mapa[1] == "X" && mapa[11] == "X")
+                            {
+                                komp = 7;
+                            }
                             if (komp == 1 && mapa[1] == " ")
                             {
                                 mapa[1] = "O";
@@ -427,6 +446,10 @@ namespace Kółkokrzyżyk
                             mapa[25] = "X";
                             Random rnd = new Random();
                             int komp = rnd.Next(1, 10);
+                            if (mapa[1] == "X" && mapa[25] == "X")
+                            {
+                                komp = 5;
+                            }
                             if (komp == 1 && mapa[1] == " ")
                             {
                                 mapa[1] = "O";
